@@ -54,10 +54,9 @@ class Employee(Person) :
         self.email = email
         self.distanceToWork =distanceToWork  
         empCar = Car(self.name) 
-        empOffice = Office(self.id)
 
         if self.salary < 1000:
-        self.salary=1000
+            self.salary=1000
 
         if self.healthRate > 100 
             self.healthRate=100
@@ -93,38 +92,80 @@ class Employee(Person) :
 # class Office
 class Office :
     name = ''
-    employees = [] 
+    employees = [] #list of objects of employee
+    employeesNum= len(employees)
 
-    def __init__(self, name='iti', empId):
+    def __init__(self, name='itiMans'):
         self.name = name 
-        self.employees.append(empId)  
+        
          
-    @staticmethod
+         
+    
     def get_all_employees(self):
         for i in employees :
-            print(i) 
+            print('id : ', i.id , ',' , 'name : ', i.name) 
         
-    @staticmethod
     def  get_employee(self,empId):
         for i in employees :
-            if i == empId :
-                print(empId)
+            if i.id == empId :
+                print('id : ', i.id , ',' , 'name : ', i.name) 
             else :
                 print('no employee has that id')
         
 
-    def hire(self):
+    def hire(self,Employee):
+       self.employees.append(employee)  
+       self.employeesNum=self.employeesNum+1
+
+    def fire (self,empId):
+        for i in employees :
+            if i.id == empId :
+                self.employees.remove(i)
+                self.employeesNum=self.employeesNum-1
+            else :
+                print('no employee has that id')
+
+        
+    @staticmethod  
+    def calculate_lateness(self,targetHour=9 , moveHour, distance, velocity):
+        time=distance/velocity
+        if targetHour-moveHour > time:
+            return 'late'
+        else :
+            return 'not late'
+       
+    def check_lateness (self, empId, moveHour):
+        for i in employees :
+            if i.id == empId :
+                check=Office.calculate_lateness(moveHour,i.distanceToWork,i.empCar.velocity)
+                if check == 'late':
+                    i.salary=i.salary-10
+                else :
+                    i.salary=i.salary+10 
+            else :
+                print('no employee has that id')
+
+
+    def deduct(self,empId, deduction):
+       for i in employees :
+            if i.id == empId :
+                i.salary=i.salary-deduction
+            else :
+                print('no employee has that id') 
        
 
-    def fire(self):
-       
-    def calculate_lateness(self):
-       
+    def reward(self,empId, reward):
+        for i in employees :
+            if i.id == empId :
+                i.salary=i.salary+reward
+            else :
+                print('no employee has that id')
+    
+    def change_emps_num (self, num):
+        self.employeesNum=num
+        len(self.employees)=num
 
-    def deduct(self):
-       
-
-    def reward(self):
+    
        
        
 
