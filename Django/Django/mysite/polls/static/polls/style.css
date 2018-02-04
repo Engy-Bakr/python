@@ -1,0 +1,8 @@
+li a {
+    color: green;
+}
+body {
+    margin-top: 150px;
+    margin-right: 30%;
+    background: rgb(221, 174, 200) url("images.gif") no-repeat right bottom;
+}
